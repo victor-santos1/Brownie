@@ -1,24 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Brownie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Felicidade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ws9-tc-sIP">
+                                <rect key="frame" x="20" y="232" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex. Macarrão" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NiO-eb-YIl">
+                                <rect key="frame" x="116" y="155" width="243" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egV-zM-MSi">
+                                <rect key="frame" x="20" y="162" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pV9-ny-ypK">
+                                <rect key="frame" x="155" y="668" width="65" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="rEb-cu-BJH"/>
+                                </constraints>
+                                <state key="normal" title="Adicionar"/>
+                                <connections>
+                                    <action selector="buttonAddTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="jfn-T8-onL"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex. 1 Triste - 5 Muito Feliz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D4e-VV-Evk">
+                                <rect key="frame" x="116" y="225" width="243" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ws9-tc-sIP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="1e7-d8-dFV"/>
+                            <constraint firstItem="NiO-eb-YIl" firstAttribute="leading" secondItem="egV-zM-MSi" secondAttribute="trailing" constant="50" id="3w3-Fx-ueF"/>
+                            <constraint firstItem="egV-zM-MSi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="118" id="4CG-Sf-QUH"/>
+                            <constraint firstItem="D4e-VV-Evk" firstAttribute="leading" secondItem="ws9-tc-sIP" secondAttribute="trailing" constant="18" id="J6t-0w-ihA"/>
+                            <constraint firstItem="ws9-tc-sIP" firstAttribute="top" secondItem="egV-zM-MSi" secondAttribute="bottom" constant="49" id="PWJ-Y1-hEb"/>
+                            <constraint firstItem="pV9-ny-ypK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="US9-I4-d74"/>
+                            <constraint firstItem="NiO-eb-YIl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="111" id="bZC-Ka-ld8"/>
+                            <constraint firstItem="egV-zM-MSi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dwD-DI-5jf"/>
+                            <constraint firstItem="D4e-VV-Evk" firstAttribute="top" secondItem="NiO-eb-YIl" secondAttribute="bottom" constant="36" id="g9G-2r-D5O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="D4e-VV-Evk" secondAttribute="trailing" constant="16" id="n6Q-gU-77v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pV9-ny-ypK" secondAttribute="bottom" constant="80" id="qJk-O4-MPF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="NiO-eb-YIl" secondAttribute="trailing" constant="16" id="xyy-Nc-Qdg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="happinessField" destination="D4e-VV-Evk" id="ruB-4y-YeY"/>
+                        <outlet property="nameFoodField" destination="NiO-eb-YIl" id="YXF-9X-3CI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="98.461538461538453" y="131.51658767772511"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
