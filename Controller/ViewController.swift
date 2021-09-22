@@ -7,17 +7,14 @@
 
 import UIKit
 
-protocol ViewControllerDelegate {
-    func add(_ meal: Meal)
-}
-
 class ViewController: UIViewController {
+    typealias Action = (Meal) -> Void
     
     @IBOutlet var nameFoodField: UITextField!
     @IBOutlet var happinessField: UITextField!
     @IBOutlet var buttonAdd: UIButton!
     
-    var delegate: ViewControllerDelegate?
+    var add: Action?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +28,7 @@ class ViewController: UIViewController {
         
         let meal = Meal(name: nameMeal, happiness: happinessInt)
         print("Comi \(meal.name) e fiquei com felicidade: \(meal.happiness)")
-        delegate?.add(meal)
+        add?(meal)
         dismiss(animated: true, completion: nil)
     }
 }
-
-
-
-
