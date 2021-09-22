@@ -1,5 +1,5 @@
 //
-//  MealTableViewController.swift
+//  MealListTableViewController.swift
 //  Brownie
 //
 //  Created by Victor on 22/09/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MealTableViewController: UITableViewController {
+class MealListTableViewController: UITableViewController {
     
     var meals = [Meal(name: "Comida Japonesa", happiness: 5),
                  Meal(name: "Pizza", happiness: 5),
@@ -15,19 +15,15 @@ class MealTableViewController: UITableViewController {
                  Meal(name: "McDonald's", happiness: 5)
     ]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    func add(_ meal: Meal) {
+    private func add(_ meal: Meal) {
         meals.append(meal)
         tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addMeal" {
-            if let viewController = segue.destination as? ViewController {
-                viewController.add = { meal in
+            if let viewController = segue.destination as? AddMealViewController {
+                viewController.handler = { meal in
                     self.add(meal)
                 }
             }
@@ -43,5 +39,12 @@ class MealTableViewController: UITableViewController {
         let meal = meals[indexPath.row]
         cell.textLabel?.text = meal.name
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            meals.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
