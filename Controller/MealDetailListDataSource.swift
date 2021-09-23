@@ -14,6 +14,10 @@ class MealDetailListDataSource: NSObject {
                  Item(name: "Azeite", calories: 000),
     ]
     var selectedItems: [Item] = []
+    
+    func add(_ item: Item) {
+        items.append(item)
+    }
 }
 
 extension MealDetailListDataSource: UITableViewDataSource {
