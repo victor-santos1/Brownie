@@ -29,7 +29,7 @@ class AddMealViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowAddItem" {
-            if let addNewItemVC = segue.destination as? NewItemListViewController {
+            if let addNewItemVC = segue.destination as? ItemListViewController {
                 addNewItemVC.handler = { item in
                     self.itemListDataSource?.add(item)
                     self.tableView.reloadData()

@@ -1,5 +1,5 @@
 //
-//  NewItemListViewController.swift
+//  ItemListViewController.swift
 //  Brownie
 //
 //  Created by Victor on 23/09/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewItemListViewController: UIViewController {
+class ItemListViewController: UIViewController {
     typealias Action = (Item) -> Void
     
     @IBOutlet var nameItemField: UITextField!
@@ -23,8 +23,8 @@ class NewItemListViewController: UIViewController {
 
     @IBAction func addItemButtonPressed(_ sender: Any) {
         guard let nameItem = nameItemField.text else { return }
-        guard let calories = caloriesItemField.text, let caloriesDoble = Double(calories) else { return }
-        
+        guard let calories = caloriesItemField.text,
+              let caloriesDoble = Double(calories) else { return }
         let item = Item(name: nameItem, calories: caloriesDoble)
         handler?(item)
         dismiss(animated: true, completion: nil)
