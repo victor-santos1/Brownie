@@ -16,21 +16,22 @@ class AddMealViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var handler: Action?
-    private var mealListDataSource: MealDetailListDataSource?
+    private var itemListDataSource: ItemListDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         AddMealButton.layer.cornerRadius = 8
-        mealListDataSource = MealDetailListDataSource()
-        tableView.dataSource = mealListDataSource
-        tableView.delegate = mealListDataSource
+        itemListDataSource = ItemListDataSource()
+        //The protocols of datasource and delegate are in only one class
+        tableView.dataSource = itemListDataSource
+        tableView.delegate = itemListDataSource
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowAddItem" {
             if let addNewItemVC = segue.destination as? NewItemListViewController {
                 addNewItemVC.handler = { item in
-                    self.mealListDataSource?.add(item)
+                    self.itemListDataSource?.add(item)
                     self.tableView.reloadData()
                 }
             }
@@ -41,7 +42,7 @@ class AddMealViewController: UIViewController {
         guard let nameMeal = nameFoodField.text else { return }
         guard let happiness = happinessField.text,
               let happinessInt = Int(happiness) else { return }
-        guard let selectedItems = mealListDataSource?.selectedItems else { return }
+        guard let selectedItems = itemListDataSource?.selectedItems else { return }
         
         let meal = Meal(name: nameMeal, happiness: happinessInt, items: selectedItems)
         handler?(meal)

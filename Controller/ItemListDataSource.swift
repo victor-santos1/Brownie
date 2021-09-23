@@ -1,5 +1,5 @@
 //
-//  MealDetailListDataSource.swift
+//  ItemListDataSource.swift
 //  Brownie
 //
 //  Created by Victor on 22/09/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MealDetailListDataSource: NSObject {
+class ItemListDataSource: NSObject {
     var items = [Item(name: "Maionese", calories: 000),
                  Item(name: "Ketchup", calories: 000),
                  Item(name: "Molho de Alho", calories: 000),
@@ -20,7 +20,7 @@ class MealDetailListDataSource: NSObject {
     }
 }
 
-extension MealDetailListDataSource: UITableViewDataSource {
+extension ItemListDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -33,7 +33,7 @@ extension MealDetailListDataSource: UITableViewDataSource {
     }
 }
 
-extension MealDetailListDataSource: UITableViewDelegate {
+extension ItemListDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         let index = indexPath.row
