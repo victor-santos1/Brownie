@@ -10,12 +10,13 @@ import UIKit
 class MealListTableViewController: UITableViewController {
     
     var mealListDataSource: MealListDataSource?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mealListDataSource = MealListDataSource()
         tableView.dataSource = mealListDataSource
+        mealListDataSource?.tableView = tableView //check with Sanada
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addMeal" {
@@ -27,4 +28,18 @@ class MealListTableViewController: UITableViewController {
             }
         }
     }
+    
+    @objc
+    func showDetailMeal(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let viewCell = gesture.view as! UITableViewCell
+            guard let indexPath = tableView?.indexPath(for: viewCell) else { return }
+            guard let meal = mealListDataSource?.meals[indexPath.row] else { return }
+            let alert = UIAlertController(title: meal.name, message: "AHH", preferredStyle: .actionSheet)
+            present(alert, animated: true, completion: nil)
+        }
+    }
 }
+
+
+
