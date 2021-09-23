@@ -43,7 +43,6 @@ class AddMealViewController: UIViewController {
         guard let happiness = happinessField.text,
               let happinessInt = Int(happiness) else { return }
         guard let selectedItems = itemListDataSource?.selectedItems else { return }
-        
         let meal = Meal(name: nameMeal, happiness: happinessInt, items: selectedItems)
         handler?(meal)
         navigationController?.popViewController(animated: true)

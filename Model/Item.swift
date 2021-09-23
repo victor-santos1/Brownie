@@ -7,12 +7,36 @@
 
 import UIKit
 
-class Item: NSObject {
+class Item: NSObject, NSCoding {
     var name: String
     var calories: Double
     
-    init(name: String, calories: Double) {
+    init?(name: String, calories: Double) {
         self.name = name
         self.calories = calories
+    }
+    
+    struct PropertyKey {
+        static let name = "title"
+        static let calories = "dueDate"
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: PropertyKey.name)
+        coder.encode(calories, forKey: PropertyKey.calories)
+    }
+    
+    required convenience init?(coder: NSCoder) {
+        guard let name = coder.decodeObject(forKey: PropertyKey.name) as? String else {
+            print("Unable to decode name.")
+            return nil
+        }
+        
+        guard let calories = coder.decodeObject(forKey: PropertyKey.calories) as? Double else {
+            print("Unable to decode calories.")
+            return nil
+        }
+        
+        self.init(name: name, calories: calories)
     }
 }
