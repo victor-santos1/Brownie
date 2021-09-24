@@ -10,7 +10,7 @@ import UIKit
 class Item: NSObject, NSCoding {
     var name: String
     var calories: Double
-    
+
     init?(name: String, calories: Double) {
         self.name = name
         self.calories = calories
@@ -31,12 +31,7 @@ class Item: NSObject, NSCoding {
             print("Unable to decode name.")
             return nil
         }
-        
-        guard let calories = coder.decodeObject(forKey: PropertyKey.calories) as? Double else {
-            print("Unable to decode calories.")
-            return nil
-        }
-        
+        let calories = coder.decodeDouble(forKey: PropertyKey.calories)
         self.init(name: name, calories: calories)
     }
 }

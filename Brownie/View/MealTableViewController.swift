@@ -9,21 +9,14 @@ import UIKit
 
 class MealListTableViewController: UITableViewController {
     
-    var meals = [Meal(name: "Comida Japonesa", happiness: 5),
-                 Meal(name: "Pizza", happiness: 5),
-                 Meal(name: "Macarrão", happiness: 3),
-                 Meal(name: "McDonald's", happiness: 5)
-    ]
-    
-    func add(_ meal: Meal) {
-        meals.append(meal)
-    }
+    var meals: [Meal] = MealDataAccess().read()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addMeal" {
+        if segue.identifier == "ShowAddMeal" {
             if let viewController = segue.destination as? AddMealViewController {
                 viewController.handler = { meal in
-                    self.add(meal)
+                    self.meals.append(meal)
+                    MealDataAccess().save(self.meals)
                     self.tableView.reloadData()
                 }
             }
@@ -36,7 +29,7 @@ class MealListTableViewController: UITableViewController {
             let viewCell = gesture.view as! UITableViewCell
             guard let indexPath = tableView?.indexPath(for: viewCell) else { return }
             let meal = meals[indexPath.row]
-            Alert(viewController: self).show(title: meal.name, message: "Está adicionado na lista")
+            Alert(viewController: self).show(title: meal.name, message: meal.totalItems())
         }
     }
     // MARK: - Tableview Data Source
@@ -57,6 +50,7 @@ class MealListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             meals.remove(at: indexPath.row)
+            MealDataAccess().save(meals)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

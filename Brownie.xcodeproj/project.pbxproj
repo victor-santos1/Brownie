@@ -19,6 +19,8 @@
 		5787C1A426FD0441001C1F0A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787C1A326FD0441001C1F0A /* Alert.swift */; };
 		579C32C726FA67EC00D05E88 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C32C626FA67EC00D05E88 /* Meal.swift */; };
 		579C32C926FA696F00D05E88 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C32C826FA696F00D05E88 /* Item.swift */; };
+		57A2409E26FE0F4300BE517E /* MealDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2409D26FE0F4300BE517E /* MealDataAccess.swift */; };
+		57A240A026FE166F00BE517E /* ItemDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2409F26FE166F00BE517E /* ItemDataAccess.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		5787C1A326FD0441001C1F0A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		579C32C626FA67EC00D05E88 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		579C32C826FA696F00D05E88 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		57A2409D26FE0F4300BE517E /* MealDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataAccess.swift; sourceTree = "<group>"; };
+		57A2409F26FE166F00BE517E /* ItemDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataAccess.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				579C32C626FA67EC00D05E88 /* Meal.swift */,
 				579C32C826FA696F00D05E88 /* Item.swift */,
 				5787C1A326FD0441001C1F0A /* Alert.swift */,
+				57A2409D26FE0F4300BE517E /* MealDataAccess.swift */,
+				57A2409F26FE166F00BE517E /* ItemDataAccess.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,9 +199,11 @@
 				579C32C926FA696F00D05E88 /* Item.swift in Sources */,
 				579C32C726FA67EC00D05E88 /* Meal.swift in Sources */,
 				5748C4EA26FA326F00E38F32 /* AddMealViewController.swift in Sources */,
+				57A240A026FE166F00BE517E /* ItemDataAccess.swift in Sources */,
 				57690F2F26FB83F8006B8689 /* ItemListDataSource.swift in Sources */,
 				5748C4E626FA326F00E38F32 /* AppDelegate.swift in Sources */,
 				57690F2D26FB57FA006B8689 /* MealTableViewController.swift in Sources */,
+				57A2409E26FE0F4300BE517E /* MealDataAccess.swift in Sources */,
 				5787C19E26FCA3BD001C1F0A /* ItemListViewController.swift in Sources */,
 				5748C4E826FA326F00E38F32 /* SceneDelegate.swift in Sources */,
 			);

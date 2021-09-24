@@ -7,15 +7,11 @@
 
 import UIKit
 
-class Meal: NSObject, NSCoding {
-    
+class Meal: NSObject, NSCoding {    
     
     var name: String
     var happiness: Int
     var items: [Item]
-    
-    static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    let archiveURL = documentsDirectory.appendingPathExtension("meals")
     
     struct PropertyKey {
         static let name = "name"
@@ -29,14 +25,22 @@ class Meal: NSObject, NSCoding {
         self.items = items
     }
     
-    func totalCalories() -> Double {
-        var total = 0.0
-    
-        for item in items {
-            total += item.calories
-        }
+    func totalItems() -> String {
+        var itemsTotal = ""
         
-        return total
+        switch items.count {
+        case 0:
+            itemsTotal = "Não tem items adicionados"
+        case 1:
+            itemsTotal = "Item:"
+        default:
+            itemsTotal = "Items:"
+        }
+       
+        for item in items {
+            itemsTotal += (" \(item.name)")
+        }
+        return itemsTotal
     }
     
     func encode(with coder: NSCoder) {
@@ -45,21 +49,13 @@ class Meal: NSObject, NSCoding {
         coder.encode(items, forKey: PropertyKey.items)
     }
     
-//    required convenience init?(coder: NSCoder) {
-//        guard let titile = coder.decodeObject(forKey: PropertyKey.name) as? String else {
-//            print("Unable to decode title.")
-//            return nil
-//        }
-//
-//        guard let happiness = coder.decodeObject(forKey: PropertyKey.happiness) as? Int else {
-//            print("Unable to decode title.")
-//            return nil
-//        }
-//
-//        guard items = coder.decodeObject(forKey: PropertyKey.items) as? [Item] else {
-//            print("Unable to decode title.")
-//            return nil
-//        }
-//        self.init(titile: titile, happiness: happiness, items: items)
-//    }
+    required convenience init?(coder: NSCoder) {
+        guard let name = coder.decodeObject(forKey: PropertyKey.name) as? String else {
+            print("Unable to decode name.")
+            return nil
+        }
+        let happiness = coder.decodeInteger(forKey: PropertyKey.happiness)
+        let items = coder.decodeObject(forKey: PropertyKey.items) as! [Item]
+        self.init(name: name, happiness: happiness, items: items)
+    }
 }

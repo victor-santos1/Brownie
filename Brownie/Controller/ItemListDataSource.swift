@@ -8,15 +8,13 @@
 import UIKit
 
 class ItemListDataSource: NSObject {
-    var items = [Item(name: "Maionese", calories: 000),
-                 Item(name: "Ketchup", calories: 000),
-                 Item(name: "Molho de Alho", calories: 000),
-                 Item(name: "Azeite", calories: 000),
-    ]
+    
+    var items: [Item] = ItemDataAccess().read()
     var selectedItems: [Item] = []
     
     func add(_ item: Item) {
         items.append(item)
+        ItemDataAccess().save(items)
     }
 }
 

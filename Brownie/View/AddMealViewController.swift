@@ -10,14 +10,15 @@ import UIKit
 class AddMealViewController: UIViewController {
     typealias Action = (Meal) -> Void
     
-    @IBOutlet var nameFoodField: UITextField!
+    @IBOutlet var nameMealField: UITextField!
     @IBOutlet var happinessField: UITextField!
     @IBOutlet var AddMealButton: UIButton!
     @IBOutlet var tableView: UITableView!
     
     var handler: Action?
-    private var itemListDataSource: ItemListDataSource?
-    
+
+    private var itemListDataSource: ItemListDataSource? // verify with Sanada
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         AddMealButton.layer.cornerRadius = 8
@@ -39,11 +40,11 @@ class AddMealViewController: UIViewController {
     }
     
     @IBAction func AddMealButtonPressed(_ sender: Any) {
-        guard let nameMeal = nameFoodField.text else { return }
+        guard let nameMeal = nameMealField.text else { return }
         guard let happiness = happinessField.text,
               let happinessInt = Int(happiness) else { return }
         guard let selectedItems = itemListDataSource?.selectedItems else { return }
-        let meal = Meal(name: nameMeal, happiness: happinessInt, items: selectedItems)
+        guard let meal = Meal(name: nameMeal, happiness: happinessInt, items: selectedItems) else { return }
         handler?(meal)
         navigationController?.popViewController(animated: true)
     }

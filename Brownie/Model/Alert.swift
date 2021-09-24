@@ -14,7 +14,7 @@ class Alert {
         self.viewController = viewController
     }
     
-    func show(title: String = "Desculpe", message: String) {
+    func show(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let dismiss = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(dismiss)
